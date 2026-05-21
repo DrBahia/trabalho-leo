@@ -2,24 +2,29 @@ import math
 
 
 
+
 #UI Inicial
 
 def menu():
     print("""
 =================
-Grades Registry
+ Grades Registry
 =================
           
 Digite o número correspondente para acessar:
 1.Registrar um novo aluno
 2.Registrar novas notas em um aluno já registrado
 3.Pesquisar Nota de Aluno
-          
-          
+
+
           
 Para sair aperte CTRL+C""")
     while True:
-        r = int(input())
+        try:
+               r = int(input())
+        except ValueError:
+               r = int(input("Digite apenas números inteiros"))
+
         match r:
             case 1:
                     registrar_aluno()
@@ -29,19 +34,26 @@ Para sair aperte CTRL+C""")
                       pesquisa()
             case _:
                       print("Digite apenas uma das opções dadas. Tente novamente")
-                    
+        break
                   
 
 
 def registrar_aluno():
-         print("bruh")
+    print("bruh")
+    with open("dados/aluno.txt", 'a') as arquivo:
+           arquivo.write("Nome Nota \n")
+        
+    return
+
 
 
 
 def registar_nota():
           print("Bruh")
+          return
 
 
 def pesquisa():
         print("Bruh")
+        return
 
