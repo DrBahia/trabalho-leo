@@ -60,30 +60,41 @@ def registrar_aluno():
 
 
 
-
-
 ### TRANSFORMAR PARA ALTERAR 2o A 5o ITEM DA LINHA PARA ALTERAR APENAS AS NOTAS
- # Pra atualizar os dados em arquivo
-            aluno[1] = str(n1)
-            aluno[2] = str(n2)
-            aluno[3] = str(n3)
-            aluno[4] = str(n4)
-            aluno[5] = f"{media:.2f}"
-                
-                
-            encontrou = True
-            break
+def registar_nota():
+    nome_procurado = input("Digite o nome do aluno que deseja alterar as notas: ")
     
-    # Pra salvar
-    if encontrou:
-        # Não pode ser as arquivo porque se não o python substitui a lista inteira
-        # Pode ser qualquer coisa no lugar de f
-        with open("dados/aluno.txt", "w", encoding="utf-8") as f:
-            for aluno in arquivo:
-                f.write(f"{aluno[0]},{aluno[1]},{aluno[2]},{aluno[3]},{aluno[4]},{aluno[5]}\n")
+    # devolvendo a lista com todos os alunos
+    lista_de_alunos = utils.carregar_alunos()
+    
+    # (o 'w' apaga o conteúdo antigo para salvar o novo)
+    arquivo = open("dados/aluno.txt", "w")
+    encontrou = False
+    
+    # Verifica se o nome digitado está na lista 
+    for aluno in lista_de_alunos:
+    
+        if aluno[0] == nome_procurado:
+            print("Aluno encontrado! Digite as novas notas:")
+            n1 = float(input("Nota 1: "))
+            n2 = float(input("Nota 2: "))
+            n3 = float(input("Nota 3: "))
+            n4 = float(input("Nota 4: "))
+            media = (n1 + n2 + n3 + n4) / 4
+            
+            # Escreve o nome do aluno e as novas notas 
+            arquivo.write(f"{nome_procurado},{n1},{n2},{n3},{n4},{media:.2f}\n")
+            encontrou = True
+        else:
+            arquivo.write(f"{aluno[0]},{aluno[1]},{aluno[2]},{aluno[3]},{aluno[4]},{aluno[5]}\n")
+            
+    # Fecha 
+    arquivo.close()
+    
+    if encontrou == True:
         print("Notas atualizadas com sucesso!")
     else:
-        print("Alunos não encontrado.")
+        print("Aluno não encontrado.")
         
     print("Aperte ENTER para continuar:")
     input()
