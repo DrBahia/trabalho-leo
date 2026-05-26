@@ -117,20 +117,5 @@ def pesquisa():
                     print("\n===== DADOS DO ALUNO =====")
                     print(f"Nome: {dados[0]}")
                     print(f"Nota 1: {dados[1]}")
-                    print(f"Nota 2: {dados[2]}")
-                    print(f"Nota 3: {dados[3]}")
-                    print(f"Nota 4: {dados[4]}")
-                    print(f"Média : {dados[5]}")
-                    print("==========================")
-
-                    break
-
-            if not encontrado:
-                print(f"Aluno '{nome_procurado}' não encontrado.")
-
-    except FileNotFoundError:
-        print("Arquivo de alunos não encontrado.")
-
-    print("\nAperte ENTER para continuar:")
-    input()
+                   
 
