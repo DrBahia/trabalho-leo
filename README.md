@@ -9,7 +9,7 @@ Trabalho Fundamentos da Programação
 - João Carnaúba
 - Maria Eduarda
 - João Pedro
-- Ana Bandeira
+- Ana
 
 
 
@@ -18,12 +18,13 @@ Trabalho Fundamentos da Programação
 Criar um sistema para registrar notas de alunos.
 
 O sistema deverá permitir:
-- Adicionar e modificar notas
-- Listar notas
-- Calcular médias
-- Organizar informações dos alunos
+- adicionar e modificar notas
+- listar notas
+- calcular médias
+- organizar informações dos alunos
 
 ## Ferramentas Utilizadas
+
 - Python
 - Git
 - GitHub
