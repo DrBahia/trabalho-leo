@@ -63,9 +63,30 @@ def registrar_aluno():
 
 
 ### TRANSFORMAR PARA ALTERAR 2o A 5o ITEM DA LINHA PARA ALTERAR APENAS AS NOTAS
-def registar_nota():
-       nome = input("Nome do aluno:")
-       return
+   # Pra atualizar os dados em arquivo
+            aluno[1] = str(n1)
+            aluno[2] = str(n2)
+            aluno[3] = str(n3)
+            aluno[4] = str(n4)
+            aluno[5] = f"{media:.2f}"
+                
+                
+            encontrou = True
+            break
+    
+    # Pra salvar
+    if encontrou:
+        # Não pode ser as arquivo porque se não o python substitui a lista inteira
+        # Pode ser qualquer coisa no lugar de f
+        with open("dados/aluno.txt", "w", encoding="utf-8") as f:
+            for aluno in arquivo:
+                f.write(f"{aluno[0]},{aluno[1]},{aluno[2]},{aluno[3]},{aluno[4]},{aluno[5]}\n")
+        print("Notas atualizadas com sucesso!")
+    else:
+        print("Alunos não encontrado.")
+        
+    print("Aperte ENTER para continuar:")
+    input()
 
 
 
