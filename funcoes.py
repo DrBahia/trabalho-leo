@@ -107,6 +107,38 @@ def registar_nota():
 
 ### PROCURAR LINHA POR NOME DO ALUNO E EXIBIR O NOME COMPLETO E AS NOTAS + MÉDIAS
 def pesquisa():
-        print("Bruh")
-        return
+       
+    nome_procurado = input("Digite o nome do aluno: ")
+
+    try:
+        with open("dados/aluno.txt", "r") as arquivo:
+            encontrado = False
+
+            for linha in arquivo:
+                dados = linha.strip().split(",")
+
+                if dados[0].lower() == nome_procurado.lower():
+                    encontrado = True
+
+                    print("\n===== DADOS DO ALUNO =====")
+                    print(f"Nome: {dados[0]}")
+                    print(f"Nota 1: {dados[1]}")
+                   
+                    print(f"Nota 2: {dados[2]}")
+                    print(f"Nota 3: {dados[3]}")
+                    print(f"Nota 4: {dados[4]}")
+                    print(f"Média : {dados[5]}")
+                    print("==========================")
+
+                    break
+
+            if not encontrado:
+                print(f"Aluno '{nome_procurado}' não encontrado.")
+
+    except FileNotFoundError:
+        print("Arquivo de alunos não encontrado.")
+
+    print("\nAperte ENTER para continuar:")
+    input()
+    return
 
