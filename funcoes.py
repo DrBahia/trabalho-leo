@@ -64,8 +64,33 @@ def registrar_aluno():
 
 ### TRANSFORMAR PARA ALTERAR 2o A 5o ITEM DA LINHA PARA ALTERAR APENAS AS NOTAS
 def registar_nota():
-       nome = input("Nome do aluno:")
-       return
+    nome_procurado = input("Digite o nome do aluno:")
+    encontrou = False
+    arquivo = utils.carregar_alunos()
+
+    for aluno in arquivo:
+           
+        if aluno[0] == nome_procurado:
+            print("Aluno encontrado! Digite as novas notas:")
+            n1 = float(input("Nota 1: "))
+            n2 = float(input("Nota 2: "))
+            n3 = float(input("Nota 3: "))
+            n4 = float(input("Nota 4: "))
+            media = (n1 + n2 + n3 + n4) / 4
+
+
+            # Pra atualizar os dados em arquivo
+            aluno[1] = str(n1)
+            aluno[2] = str(n2)
+            aluno[3] = str(n3)
+            aluno[4] = str(n4)
+            aluno[5] = f"{media:.2f}"
+                
+                
+            encontrou = True
+            break
+
+
 
 
 
