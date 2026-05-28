@@ -36,6 +36,7 @@ trabalho-leo/
 │   ├── alunos.txt
 ├── funcoes.py
 ├── main.py
+├── utils.py
 ```
 ## Organização com Branches
 Cada integrante do grupo trabalha em sua própria branch.
