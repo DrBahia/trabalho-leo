@@ -69,7 +69,7 @@ def registrar_aluno():
                 break
             except ValueError:
                 print("Digite apenas números. Tente novamente")
-        #Registra as notas
+        #Registra as notas nos respectivos arquivos
         with open(f"{materia[0]}", 'a') as file:
             file.write(f"{nome},{nota1},{nota2},{nota3},{nota4},{media:.2f}\n")
 
@@ -107,6 +107,7 @@ def registrar_aluno():
 ### TRANSFORMAR PARA ALTERAR 2o A 5o ITEM DA LINHA PARA ALTERAR APENAS AS NOTAS
 def registar_nota(nome_procurado):
     try:
+        #Menu de escolha de notas para alterar
             materia = int(input('''
 Digite o número correspondente da matéria que deseja alterar as notas:
 1.Humanas
@@ -117,6 +118,7 @@ Digite o número correspondente da matéria que deseja alterar as notas:
                   '''))
     except ValueError:
             materia = int(input("Digite apenas números inteiros"))
+    #Diz local do arquivo a ser utilizado dependendo do input do usuario
     match materia:
         case 1:
                 materia = "dados/humanas.txt"
