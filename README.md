@@ -33,14 +33,19 @@ O sistema deverá permitir:
 trabalho-leo/
 │
 ├── dados/
-│   ├── alunos.txt
+│   ├── 0materias.txt
+│   ├── humanas.txt
+│   ├── linguagens.txt
+│   ├── matematica.txt
+│   ├── naturezas.txt
+│   ├── redacao.txt
 ├── funcoes.py
 ├── main.py
 ├── utils.py
 ```
 ## Organização com Branches
 Cada integrante do grupo trabalha em sua própria branch.
-Framework, registro inicial e menu principal feito por João Gomes. JA MERGED COM MAIN
+Framework, registro inicial, menu principal e scaling para matérias feito por João Gomes.
 
 Funções feitas:
 Procurar Aluno feito por Ana Bandeira e Maria Eduarda
