@@ -1,6 +1,7 @@
 import math
 import funcoes
 import utils
+import os
 
 
 try:

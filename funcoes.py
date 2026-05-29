@@ -1,5 +1,6 @@
 import math
 import utils
+import os
 
 ### USAR utils.carregar_alunos() PARA PUXAR AS INFORMAÇÕES DOS ALUNOS
 
@@ -74,9 +75,9 @@ def registrar_aluno():
             file.write(f"{nome},{nota1},{nota2},{nota3},{nota4},{media:.2f}\n")
 
 
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     #Exibe as medias de cada matéria
-    print(f"Aluno '{nome}' registrado com médias:")
+    print(f"Aluno(a) '{nome}' registrado com médias:")
     for materia in arquivo:
           alunos = utils.carregar_alunos(materia[0])
           # O aluno recém-registrado é o último da lista; a média é a 6ª coluna
@@ -92,14 +93,9 @@ def registrar_aluno():
                     print(f"Naturezas: {media_aluno}")
               case "dados/redacao.txt":
                     print(f"Redação: {media_aluno}")
-
-
-
-
-
-
-    print("Aperte ENTER para continuar:")
+    print("\nAperte ENTER para continuar:")
     input()
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
@@ -182,8 +178,9 @@ Digite o número correspondente da matéria que deseja alterar as notas:
     else:
         print("Aluno não encontrado.")
 
-    print("Aperte ENTER para continuar:")
+    print("\nAperte ENTER para continuar:")
     input()
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
@@ -191,7 +188,7 @@ Digite o número correspondente da matéria que deseja alterar as notas:
 def pesquisa():
 
     nome_procurado = input("Digite o nome do aluno: ")
-
+    os.system('cls' if os.name == 'nt' else 'clear')
     # As notas ficam separadas por matéria; percorre cada arquivo de matéria
     materias = utils.carregar_alunos("dados/0materias.txt")
     encontrado = False
@@ -246,6 +243,7 @@ Digite o número correspondente para acessar:
         case 1:
                 print("\nAperte ENTER para continuar:")
                 input()
+                os.system('cls' if os.name == 'nt' else 'clear')
                 return
         case 2:
                 registar_nota(nome_procurado)

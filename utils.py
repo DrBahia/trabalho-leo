@@ -1,5 +1,5 @@
 import math
-
+import os
 
 
 def carregar_alunos(materia):
