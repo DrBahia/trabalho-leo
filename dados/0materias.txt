@@ -1,0 +1,5 @@
+dados/humanas.txt
+dados/linguagens.txt
+dados/matematica.txt
+dados/naturezas.txt
+dados/redacao.txt

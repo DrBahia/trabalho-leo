@@ -2,10 +2,11 @@ import math
 
 
 
-def carregar_alunos():
+def carregar_alunos(materia):
     alunos = []
+
     try:
-        with open("dados/aluno.txt", 'r') as arquivo:
+        with open(f"{materia}", 'r') as arquivo:
             for linha in arquivo:
                 if linha.strip():
                     alunos.append(linha.strip().split(','))
