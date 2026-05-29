@@ -10,13 +10,13 @@ def menu():
 =================
  Grades Registry
 =================
-          
+
 Digite o número correspondente para acessar:
 1.Registrar um novo aluno
 2.Pesquisar Nota de Aluno/Alterar Notas
 
 
-          
+
 Para sair aperte CTRL+C""")
     while True:
         try:
@@ -73,34 +73,33 @@ def registrar_aluno():
         with open(f"{materia[0]}", 'a') as file:
             file.write(f"{nome},{nota1},{nota2},{nota3},{nota4},{media:.2f}\n")
 
-        
-    
+
+
     #Exibe as medias de cada matéria
     print(f"Aluno '{nome}' registrado com médias:")
     for materia in arquivo:
-          file = utils.carregar_alunos(materia[0])
-          print(f"{file[5]}")
+          alunos = utils.carregar_alunos(materia[0])
+          # O aluno recém-registrado é o último da lista; a média é a 6ª coluna
+          media_aluno = alunos[-1][5]
           match materia[0]:
               case "dados/humanas.txt":
-                    print(f"Humanas:{file[5]}")
+                    print(f"Humanas: {media_aluno}")
               case "dados/linguagens.txt":
-                    print(f"Linguagens: {file[5]}")
+                    print(f"Linguagens: {media_aluno}")
               case "dados/matematica.txt":
-                    print(f"Matematica: {file[5]}")
+                    print(f"Matematica: {media_aluno}")
               case "dados/naturezas.txt":
-                    print(f"Naturezas: {file[5]}")
+                    print(f"Naturezas: {media_aluno}")
               case "dados/redacao.txt":
-                    print(f"Redação: {file[5]}")
-
-    
-          
+                    print(f"Redação: {media_aluno}")
 
 
-    
+
+
+
+
     print("Aperte ENTER para continuar:")
     input()
-
-
 
 
 
@@ -180,7 +179,7 @@ Digite o número correspondente da matéria que deseja alterar as notas:
         print("Notas atualizadas com sucesso!")
     else:
         print("Aluno não encontrado.")
-        
+
     print("Aperte ENTER para continuar:")
     input()
 
@@ -188,33 +187,50 @@ Digite o número correspondente da matéria que deseja alterar as notas:
 
 ### PROCURAR LINHA POR NOME DO ALUNO E EXIBIR O NOME COMPLETO E AS NOTAS + MÉDIAS
 def pesquisa():
-    
+
     nome_procurado = input("Digite o nome do aluno: ")
 
-    try:
-        with open("dados/aluno.txt", "r") as arquivo:
-            encontrado = False
+    # As notas ficam separadas por matéria; percorre cada arquivo de matéria
+    materias = utils.carregar_alunos("dados/0materias.txt")
+    encontrado = False
+    nome_completo = nome_procurado
 
-            for linha in arquivo:
-                dados = linha.strip().split(",")
-                if dados[0].lower() == nome_procurado.lower():
-                    encontrado = True
-                    
-                    print("\n===== DADOS DO ALUNO =====")
-                    print(f"Nome: {dados[0]}")
-                    print(f"Nota 1: {dados[1]}")
-                    print(f"Nota 2: {dados[2]}")
-                    print(f"Nota 3: {dados[3]}")
-                    print(f"Nota 4: {dados[4]}")
-                    print(f"Média : {dados[5]}")
-                    print("==========================")
+    print("\n===== DADOS DO ALUNO =====")
+    for materia in materias:
+        alunos = utils.carregar_alunos(materia[0])
+        for aluno in alunos:
+            if aluno[0].lower() == nome_procurado.lower():
+                encontrado = True
+                nome_completo = aluno[0]
 
-                    break
+                match materia[0]:
+                    case "dados/humanas.txt":
+                        nome_materia = "Humanas"
+                    case "dados/linguagens.txt":
+                        nome_materia = "Linguagens"
+                    case "dados/matematica.txt":
+                        nome_materia = "Matematica"
+                    case "dados/naturezas.txt":
+                        nome_materia = "Naturezas"
+                    case "dados/redacao.txt":
+                        nome_materia = "Redação"
+                    case _:
+                        nome_materia = materia[0]
 
-            if not encontrado:
-                print(f"Aluno '{nome_procurado}' não encontrado.")
-    except FileNotFoundError:
-        print("Arquivo de alunos não encontrado.")
+                print(f"\n{nome_materia}:")
+                print(f"  Nota 1: {aluno[1]}")
+                print(f"  Nota 2: {aluno[2]}")
+                print(f"  Nota 3: {aluno[3]}")
+                print(f"  Nota 4: {aluno[4]}")
+                print(f"  Média : {aluno[5]}")
+                break
+
+    if encontrado:
+        print(f"\nNome: {nome_completo}")
+        print("==========================")
+    else:
+        print(f"Aluno '{nome_procurado}' não encontrado.")
+        print("==========================")
     try:
             r = int(input('''
 Digite o número correspondente para acessar:
@@ -223,7 +239,7 @@ Digite o número correspondente para acessar:
                   '''))
     except ValueError:
             r = int(input("Digite apenas números inteiros"))
-    
+
     match r:
         case 1:
                 print("\nAperte ENTER para continuar:")
@@ -233,5 +249,3 @@ Digite o número correspondente para acessar:
                 registar_nota(nome_procurado)
         case _:
                 print("Digite apenas uma das opções dadas. Tente novamente")
-    
-
