@@ -46,8 +46,6 @@ trabalho-leo/
 ## Organização com Branches
 Cada integrante do grupo trabalha em sua própria branch.
 Framework, registro inicial, menu principal e scaling para matérias feito por João Gomes.
-
-Funções feitas:
-Procurar Aluno feito por Ana Bandeira e Maria Eduarda
-Alterar notas feito por João Pedro e Livia
+Função Procurar Aluno feito por Ana Bandeira e Maria Eduarda
+Função Alterar notas feito por João Pedro e Livia
 ##  Projeto Finalizado
